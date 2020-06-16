@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+long long int gcd(long long int a, long long int b) 
+{ 
+    if (a == 0) 
+        return b;  
+    return gcd(b % a, a);  
+} 
+
+long long int lcm(long long int a, long long int b) 
+{ 
+    return (a*b)/gcd(a, b); 
+}
+
+int main() {
+	//code
+	long long int n;
+	cin>>n;
+	long long int a[n];
+	long long int b[n];
+	for(int i=0;i<n;i++)
+	{
+	    cin>>a[i]>>b[i];
+	}
+	
+	for(int j=0;j<n;j++)
+	{
+	    long long int x=a[j];
+	    long long int y=b[j];
+	    long long int c=gcd(x,y);
+	    long long int d=lcm(x,y);
+	    cout<<d<<" "<<c;
+	    cout<<"\n";
+	}
+	return 0;
+}
