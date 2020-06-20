@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+int gcd(long long int a, long long int b) 
+{ 
+    if (a == 0) 
+        return b;  
+    return gcd(b % a, a);  
+} 
+
+int main() {
+	long long int n;
+	cin>>n;
+	long long int c=0;
+	long long int x=1;
+	long long int f=0;
+	while(x<n)
+	{
+		f=gcd(x,n);
+		if(f==1)
+		{
+			c++;
+			f=0;
+		}
+		x++;
+	}
+	cout<<c;
+	return 0;		
+}
