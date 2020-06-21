@@ -1,0 +1,30 @@
+class Solution {
+    public String addStrings(String num1, String num2) { 
+        StringBuilder ans = new StringBuilder();
+        
+        int c = 0;
+        int i = num1.length() - 1, j = num2.length() - 1;
+        for(; i >= 0 && j >= 0; i--, j--) {
+            int digit1 = num1.charAt(i) - '0';
+            int digit2 = num2.charAt(j) - '0';
+            ans.append((digit1 + digit2 + c) % 10);
+            c = (digit1 + digit2 + c) / 10;
+        }
+        
+        while(i >= 0) {
+            int digit1 = num1.charAt(i--) - '0';
+            ans.append((digit1 + c) % 10);
+            c = (digit1 + c) / 10;
+        }
+        
+        while(j >= 0) {
+            int digit2 = num2.charAt(j--) - '0';
+            ans.append((digit2 + c) % 10);
+            c = (digit2 + c) / 10;
+        }
+        
+        if(c > 0) ans.append(c);
+        
+        return ans.reverse().toString();
+    }
+}
